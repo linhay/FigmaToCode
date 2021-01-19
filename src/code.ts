@@ -15,6 +15,7 @@ let material = true;
 let mode:
   | "flutter"
   | "swiftui"
+  | "stem-swift"
   | "html"
   | "tailwind"
   | "bootstrap"
@@ -49,6 +50,8 @@ const run = () => {
   } else if (mode === "tailwind") {
     result = tailwindMain(convertedSelection, parentId, isJsx, layerName);
   } else if (mode === "swiftui") {
+    result = swiftuiMain(convertedSelection, parentId);
+  } else if (mode === "stem-swift") {
     result = swiftuiMain(convertedSelection, parentId);
   } else if (mode === "html") {
     result = htmlMain(convertedSelection, parentId, isJsx, layerName);
@@ -92,6 +95,7 @@ figma.ui.onmessage = (msg) => {
     msg.type === "tailwind" ||
     msg.type === "flutter" ||
     msg.type === "swiftui" ||
+    msg.type === "stem-swift" ||
     msg.type === "html"
   ) {
     mode = msg.type;

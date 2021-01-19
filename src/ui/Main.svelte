@@ -26,6 +26,7 @@
   import ScreenTailwind from "./ScreenTailwind.svelte";
   import ScreenFlutter from "./ScreenFlutter.svelte";
   import ScreenSwiftUI from "./ScreenSwiftUI.svelte";
+  import ScreenStemSwift from "./ScreenStemSwift.svelte";
   import ScreenHTML from "./ScreenHtml.svelte";
   import ScreenAbout from "./ScreenAbout.svelte";
 
@@ -44,6 +45,7 @@
     <Tab>Tailwind 2</Tab>
     <Tab>Flutter</Tab>
     <Tab>SwiftUI</Tab>
+    <Tab>STSwift</Tab>
     <Tab>HTML</Tab>
     <Tab>About</Tab>
   </TabList>
@@ -58,6 +60,10 @@
 
   <TabPanel>
     <ScreenSwiftUI on:clipboard={updateClipboard} />
+  </TabPanel>
+
+    <TabPanel>
+    <ScreenStemSwift on:clipboard={updateClipboard} />
   </TabPanel>
 
   <TabPanel>
