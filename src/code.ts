@@ -1,5 +1,6 @@
 import { htmlMain } from "./html/htmlMain";
 import { swiftuiMain } from "./swiftui/swiftuiMain";
+import { stemSwiftMain } from "./stem-swift/swiftuiMain";
 import { tailwindMain } from "./tailwind/tailwindMain";
 import { flutterMain } from "./flutter/flutterMain";
 import { retrieveFlutterColors } from "./flutter/retrieveUI/retrieveColors";
@@ -21,7 +22,7 @@ let mode:
   | "bootstrap"
   | "material";
 
-figma.showUI(__html__, { width: 450, height: 550 });
+figma.showUI(__html__, { width: 600, height: 550 });
 
 const run = () => {
   // ignore when nothing was selected
@@ -52,12 +53,10 @@ const run = () => {
   } else if (mode === "swiftui") {
     result = swiftuiMain(convertedSelection, parentId);
   } else if (mode === "stem-swift") {
-    result = swiftuiMain(convertedSelection, parentId);
+    result = stemSwiftMain(figma.currentPage.selection);
   } else if (mode === "html") {
     result = htmlMain(convertedSelection, parentId, isJsx, layerName);
   }
-
-  console.log(result);
 
   figma.ui.postMessage({
     type: "result",

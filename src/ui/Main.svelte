@@ -42,14 +42,18 @@
 <Tabs>
 
   <TabList>
+    <Tab>STSwift</Tab>
     <Tab>Tailwind 2</Tab>
     <Tab>Flutter</Tab>
     <Tab>SwiftUI</Tab>
-    <Tab>STSwift</Tab>
     <Tab>HTML</Tab>
     <Tab>About</Tab>
   </TabList>
 
+  <TabPanel>
+    <ScreenStemSwift on:clipboard={updateClipboard} />
+  </TabPanel>
+  
   <TabPanel>
     <ScreenTailwind on:clipboard={updateClipboard} />
   </TabPanel>
@@ -60,10 +64,6 @@
 
   <TabPanel>
     <ScreenSwiftUI on:clipboard={updateClipboard} />
-  </TabPanel>
-
-    <TabPanel>
-    <ScreenStemSwift on:clipboard={updateClipboard} />
   </TabPanel>
 
   <TabPanel>
