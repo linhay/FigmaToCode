@@ -18,20 +18,20 @@ export class NodeBuilder {
     this.layer.build(node);
     this.frame.build(node);
 
-    // let fills = (<AltGeometryMixin>node).fills;
-    // if (fills != figma.mixed) {
-    //   for (const iterator of <ReadonlyArray<Paint>>fills) {
-    //     let builder = new Fill(iterator);
-    //     this.fills.push(builder);
-    //   }
-    // }
+    let fills = (<GeometryMixin>node).fills;
+    if (fills != figma.mixed) {
+      for (const iterator of <ReadonlyArray<Paint>>fills) {
+        let builder = new Fill(iterator);
+        this.fills.push(builder);
+      }
+    }
   }
 
   nodeClassType: string = "UIView";
 
   nodeBackgroundColor(): string {
-    if (this.fills.length > 0) {
-      return `item.backgroundColor = Colors._${this.fills[0].color.hex}.value()`;
+    if (this.fills.length > 0 && this.fills[0].color != null) {
+      return `item.backgroundColor = Colors._${this.fills[0].color.hex()}.value()`;
     } else {
       return "";
     }

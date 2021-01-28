@@ -1,19 +1,26 @@
 export class Color {
-  hex: string = "";
 
-  build(r: number, g: number, b: number, alpha: number) {
+  r: number;
+  g: number;
+  b: number;
+  alpha: number;
+
+  hex() {
     let str = "";
-    if (alpha < 1) {
-      str += ((alpha * 255) | (1 << 8)).toString(16).slice(1);
+    if (this.alpha < 1) {
+      str += ((this.alpha * 255) | (1 << 8)).toString(16).slice(1);
     }
     str +=
-      ((r * 255) | (1 << 8)).toString(16).slice(1) +
-      ((g * 255) | (1 << 8)).toString(16).slice(1) +
-      ((b * 255) | (1 << 8)).toString(16).slice(1);
-    this.hex = str.toUpperCase();
+      ((this.r * 255) | (1 << 8)).toString(16).slice(1) +
+      ((this.g * 255) | (1 << 8)).toString(16).slice(1) +
+      ((this.b * 255) | (1 << 8)).toString(16).slice(1);
+    return str.toUpperCase();
   }
 
-  constructor(hex: string) {
-    this.hex = hex.toUpperCase();
+  constructor(r: number, g: number, b: number, alpha: number = 1) {
+    this.r = r
+    this.g = g
+    this.b = b
+    this.alpha = alpha
   }
 }
